@@ -35,10 +35,6 @@ def ghostnet_1x(pretrained=True, **kwargs):
 	"""
 	model = ghostnet(num_classes=1000, width=1.0, dropout=0.2)
 	if pretrained:
-		#state_dict_url = 'https://github.com/huawei-noah/ghostnet/raw/master/ghostnet_pytorch/models/state_dict_73.98.pth'
-		#state_dict = torch.hub.load_state_dict_from_url(state_dict_url, progress=True)
-		#model.load_state_dict(state_dict)
-
 		checkpoint_url = "https://github.com/huawei-noah/ghostnet/raw/master/ghostnet_pytorch/models/state_dict_73.98.pth"
 		cache_file_name = "ghostnet_1x_state_dict_73.98-965143b0.pth.tar"
 		state_dict = torch.hub.load_state_dict_from_url(
@@ -66,8 +62,17 @@ def pvig_ti_224_gelu(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_ti_224_gelu()
 	if pretrained:
-		# trouble downloading weights from baidu, update when sucessfully download weights
-		pass
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/pvig_ti_78.5-06c49bda.pth.tar"
+		cache_file_name = "pvig_ti_78.5-06c49bda.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '06c49bda'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
@@ -80,8 +85,17 @@ def pvig_s_224_gelu(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_s_224_gelu()
 	if pretrained:
-		# trouble downloading weights from baidu, update when sucessfully download weights
-		pass
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/ptnt-s-82.0-1752a427.pth.tar"
+		cache_file_name = "ptnt-s-82.0-1752a427.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '1752a427'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
@@ -94,8 +108,17 @@ def pvig_m_224_gelu(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_m_224_gelu()
 	if pretrained:
-		# trouble downloading weights from baidu, update when sucessfully download weights
-		pass
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/pvig_m_83.1-5a5ce0c0.pth.tar"
+		cache_file_name = "pvig_m_83.1-5a5ce0c0.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '5a5ce0c0'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
