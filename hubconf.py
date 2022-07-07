@@ -6,6 +6,7 @@ import torchvision
 from ghostnet_pytorch.ghostnet import ghostnet
 from snnmlp_pytorch.models.snn_mlp import SNNMLP
 from vig_pytorch import pyramid_vig as _pyramid_vig
+from wavemlp_pytorch.models import wavemlp as _wavemlp
 
 dependencies = ['torch', 'torchvision']
 
@@ -182,3 +183,29 @@ def snnmlp_b(pretrained=False, **kwargs):
 	  	  model.load_state_dict(state_dict)
 	  return model
 
+# ===================================================================
+#  wavemlp
+# ===================================================================
+
+def wavemlp_t_dw_in1k(pretrained=True, **kwargs):
+	"""
+	Vision GNN (pvig_m_224_gelu)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+	model = _wavemlp.WaveMLP_T_dw()
+	if pretrained:
+		checkpoint_url = "https://github.com/huawei-noah/CV-Backbones/releases/download/wavemlp/WaveMLP_T_dw.pth.tar"
+		cache_file_name = "WaveMLP_T_dw-cf09a27d.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = 'cf09a27d'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224/.9), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+	return model, transform
