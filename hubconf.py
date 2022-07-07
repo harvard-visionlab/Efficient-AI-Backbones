@@ -85,8 +85,8 @@ def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_s_224_gelu()
 	if pretrained:
-		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/ptnt_s_82.0-1752a427.pth.tar"
-		cache_file_name = "ptnt_s_82.0-1752a427.pth.tar"
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/pvig_s_82.1-03455330.pth.tar"
+		cache_file_name = "pvig_s_82.1-03455330.pth.tar"
 		state_dict = torch.hub.load_state_dict_from_url(
 			url=checkpoint_url, 
 			map_location='cpu',
@@ -94,7 +94,7 @@ def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 			check_hash=True
 		)
 		model.load_state_dict(state_dict, strict=True)
-		model.hashid = '1752a427'
+		model.hashid = '03455330'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
