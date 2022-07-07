@@ -144,7 +144,7 @@ def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 
 def wavemlp_t_dw_in1k(pretrained=True, **kwargs):
 	"""
-	Vision GNN (pvig_m_224_gelu)
+	Wave MLP (wavemlp_t_dw)
 	pretrained (bool): kwargs, load pretrained weights into the model
 	"""
 	model = _wavemlp.WaveMLP_T_dw()
