@@ -1,6 +1,11 @@
+'''
+	modified to include sha256 verification and ViGNN models
+'''
+
 # 2020.06.09-GhostNet definition for pytorch hub
 #            Huawei Technologies Co., Ltd. <foss@huawei.com>
 
+import os
 import torch
 import torchvision
 from ghostnet_pytorch.ghostnet import ghostnet
