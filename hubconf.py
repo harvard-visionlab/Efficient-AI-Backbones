@@ -235,5 +235,51 @@ def wavemlp_t_in1k(pretrained=True, **kwargs):
 
 	return model, transform
 
+def wavemlp_s_in1k(pretrained=True, **kwargs):
+	"""
+	Wave MLP (wavemlp_s)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+	model = _wavemlp.WaveMLP_S()
+	if pretrained:
+		checkpoint_url = "https://github.com/huawei-noah/CV-Backbones/releases/download/wavemlp/WaveMLP_S.pth.tar"
+		cache_file_name = "WaveMLP_S-1a1f39fc.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		state_dict = {k:v for k,v in state_dict.items() if not k.endswith("total_ops") and not k.endswith("total_params") }
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '1a1f39fc'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224/.9), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
+	return model, transform
+
+def wavemlp_m_in1k(pretrained=True, **kwargs):
+	"""
+	Wave MLP (wavemlp_m)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+	model = _wavemlp.WaveMLP_M()
+	if pretrained:
+		checkpoint_url = "https://github.com/huawei-noah/CV-Backbones/releases/download/wavemlp/WaveMLP_M.pth.tar"
+		cache_file_name = "WaveMLP_M-39dd2019.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		state_dict = {k:v for k,v in state_dict.items() if not k.endswith("total_ops") and not k.endswith("total_params") }
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '39dd2019'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224/.9), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+	return model, transform
 
