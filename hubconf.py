@@ -132,8 +132,17 @@ def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_b_224_gelu()
 	if pretrained:
-		# trouble downloading weights from baidu, update when sucessfully download weights
-		pass
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/pvig_b_83.66-aafa414a.pth.tar"
+		cache_file_name = "pvig_b_83.66-aafa414a.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = 'aafa414a'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
 	transform = _transform(resize=int(224/.95), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
