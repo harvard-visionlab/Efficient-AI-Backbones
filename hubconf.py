@@ -209,3 +209,29 @@ def wavemlp_t_dw_in1k(pretrained=True, **kwargs):
 	transform = _transform(resize=int(224/.9), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 	return model, transform
+
+def wavemlp_t_in1k(pretrained=True, **kwargs):
+	"""
+	Wave MLP (wavemlp_t_in1k)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+	model = _wavemlp.WaveMLP_T()
+	if pretrained:
+		checkpoint_url = "https://github.com/huawei-noah/CV-Backbones/releases/download/wavemlp/WaveMLP_T.pth.tar"
+		cache_file_name = "WaveMLP_T-6b42f045.pth.tar"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		model.load_state_dict(state_dict, strict=True)
+		model.hashid = '6b42f045'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224/.9), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+	return model, transform
+
+
+
