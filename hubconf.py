@@ -54,7 +54,7 @@ def ghostnet_1x(pretrained=True, **kwargs):
 #  Vision Graph Neural Network
 # ===================================================================
 
-def pvig_ti_224_gelu(pretrained=True, **kwargs):
+def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_ti_224_gelu)
 	pretrained (bool): kwargs, load pretrained weights into the model
@@ -77,7 +77,7 @@ def pvig_ti_224_gelu(pretrained=True, **kwargs):
 
 	return model, transform
 
-def pvig_s_224_gelu(pretrained=True, **kwargs):
+def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_s_224_gelu)
 	pretrained (bool): kwargs, load pretrained weights into the model
@@ -100,7 +100,7 @@ def pvig_s_224_gelu(pretrained=True, **kwargs):
 
 	return model, transform
 
-def pvig_m_224_gelu(pretrained=True, **kwargs):
+def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_m_224_gelu)
 	pretrained (bool): kwargs, load pretrained weights into the model
@@ -123,7 +123,7 @@ def pvig_m_224_gelu(pretrained=True, **kwargs):
 
 	return model, transform
 
-def pvig_b_224_gelu(pretrained=True, **kwargs):
+def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_b_224_gelu)
 	pretrained (bool): kwargs, load pretrained weights into the model
