@@ -14,7 +14,7 @@ from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 from timm.models.resnet import resnet26d, resnet50d
 from timm.models.registry import register_model
 
-from gcn_lib import Grapher, act_layer
+from .gcn_lib import Grapher, act_layer
 
 
 def _cfg(url='', **kwargs):
