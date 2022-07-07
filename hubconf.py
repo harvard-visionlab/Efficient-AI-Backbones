@@ -202,6 +202,7 @@ def wavemlp_t_dw_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
+		state_dict = {k:v for k,v in state_dict.items() if not k.endswith("total_ops") and not k.endswith("total_params") }
 		model.load_state_dict(state_dict, strict=True)
 		model.hashid = 'cf09a27d'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
@@ -225,6 +226,7 @@ def wavemlp_t_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
+		state_dict = {k:v for k,v in state_dict.items() if not k.endswith("total_ops") and not k.endswith("total_params") }
 		model.load_state_dict(state_dict, strict=True)
 		model.hashid = '6b42f045'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
