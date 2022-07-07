@@ -1,3 +1,5 @@
+# forked from [huawei-noah/Efficient-AI-Backbones](https://github.com/huawei-noah/Efficient-AI-Backbones)
+
 # Efficient AI Backbones 
 including GhostNet, TNT (Transformer in Transformer), AugViT, WaveMLP and ViG developed by Huawei Noah's Ark Lab.
 - [News](#news)
