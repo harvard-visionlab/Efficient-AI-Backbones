@@ -116,7 +116,7 @@ def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		model.load_state_dict(state_dict, strict=True)
+		#model.load_state_dict(state_dict, strict=True)
 		model.hashid = '5a5ce0c0'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
