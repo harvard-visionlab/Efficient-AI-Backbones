@@ -53,7 +53,7 @@ def ghostnet_1x(pretrained=True, **kwargs):
 		
 	transform = _transform(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-	return model
+	return model, transform
 
 # ===================================================================
 #  Vision Graph Neural Network
@@ -71,7 +71,7 @@ def pvig_ti_224_gelu(pretrained=True, **kwargs):
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
-	return model
+	return model, transform
 
 def pvig_s_224_gelu(pretrained=True, **kwargs):
 	"""
@@ -85,7 +85,7 @@ def pvig_s_224_gelu(pretrained=True, **kwargs):
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
-	return model
+	return model, transform
 
 def pvig_m_224_gelu(pretrained=True, **kwargs):
 	"""
@@ -99,7 +99,7 @@ def pvig_m_224_gelu(pretrained=True, **kwargs):
 		
 	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
-	return model
+	return model, transform
 
 def pvig_b_224_gelu(pretrained=True, **kwargs):
 	"""
@@ -113,7 +113,7 @@ def pvig_b_224_gelu(pretrained=True, **kwargs):
 		
 	transform = _transform(resize=int(224/.95), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
-	return model
+	return model, transform
 
 def ghostnet_1x(pretrained=False, **kwargs):
 	  """ # This docstring shows up in hub.help()
