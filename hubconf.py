@@ -246,7 +246,7 @@ def snnmlp_t(pretrained=False, **kwargs):
     SNN-MLP tiny model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
 	model = _SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 6, 2], drop_path_rate=0.2)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_t, progress=True)
@@ -258,7 +258,7 @@ def snnmlp_s(pretrained=False, **kwargs):
     SNN-MLP small model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
 	model = _SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 18, 2], drop_path_rate=0.3)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_s, progress=True)
@@ -270,7 +270,7 @@ def snnmlp_b(pretrained=False, **kwargs):
     SNN-MLP base model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
 	model = _SNNMLP(num_classes=1000, embed_dim=128, depths=[2, 2, 18, 2], drop_path_rate=0.5)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_b, progress=True)
