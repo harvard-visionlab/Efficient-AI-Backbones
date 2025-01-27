@@ -1,6 +1,7 @@
 # 2022.09.16-GhostNet & SNN-MLP definition for pytorch hub
 #            Huawei Technologies Co., Ltd. <foss@huawei.com>
 
+import os
 import torch
 import torchvision
 from ghostnet_pytorch.ghostnet import ghostnet
@@ -8,6 +9,7 @@ from snnmlp_pytorch.models.snn_mlp import SNNMLP
 from vig_pytorch import pyramid_vig as _pyramid_vig
 from vig_pytorch import vig as _vig
 from wavemlp_pytorch.models import wavemlp as _wavemlp
+from pdb import set_trace
 
 dependencies = ['torch', 'torchvision']
 
@@ -144,14 +146,14 @@ def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-        msg = model.load_state_dict(state_dict, strict=True)
-        print(msg)
-        model.hashid = '06c49bda'
-        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-    
-    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
-    return model
+		msg = model.load_state_dict(state_dict, strict=True)
+		print(msg)
+		model.hashid = '06c49bda'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+	
+	return model
 
 def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -169,13 +171,13 @@ def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 			check_hash=True
 		)
 		msg = model.load_state_dict(state_dict, strict=True)
-        print(msg)
-        model.hashid = '03455330'
-        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		print(msg)
+		model.hashid = '03455330'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
     
-    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-    return model
+	return model
 
 def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -193,13 +195,13 @@ def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 			check_hash=True
 		)
 		msg = model.load_state_dict(state_dict, strict=True)
-        print(msg)
-        model.hashid = '5a5ce0c0'
-        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		print(msg)
+		model.hashid = '5a5ce0c0'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
     
-    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-    return model
+	return model
 
 def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -216,62 +218,62 @@ def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-        msg = model.load_state_dict(state_dict, strict=True)
-        print(msg)
-        model.hashid = 'aafa414a'
-        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		msg = model.load_state_dict(state_dict, strict=True)
+		print(msg)
+		model.hashid = 'aafa414a'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
     
-    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     
-    return model
+	return model
 
 # ===================================================================
 #  others...
 # ===================================================================
 
 def ghostnet_1x(pretrained=False, **kwargs):
-	  """ # This docstring shows up in hub.help()
+	""" # This docstring shows up in hub.help()
     GhostNet 1.0x model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	  model = ghostnet(num_classes=1000, width=1.0, dropout=0.2)
-	  if pretrained:
-	  	  state_dict = torch.hub.load_state_dict_from_url(state_dict_url, progress=True)
-	  	  model.load_state_dict(state_dict)
-	  return model
+	model = ghostnet(num_classes=1000, width=1.0, dropout=0.2)
+	if pretrained:
+		state_dict = torch.hub.load_state_dict_from_url(state_dict_url, progress=True)
+		model.load_state_dict(state_dict)
+	return model
 
 def snnmlp_t(pretrained=False, **kwargs):
-	  """ # This docstring shows up in hub.help()
+	""" # This docstring shows up in hub.help()
     SNN-MLP tiny model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	  model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 6, 2], drop_path_rate=0.2)
-	  if pretrained:
-	  	  state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_t, progress=True)
-	  	  model.load_state_dict(state_dict)
-	  return model
+	model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 6, 2], drop_path_rate=0.2)
+	if pretrained:
+		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_t, progress=True)
+		model.load_state_dict(state_dict)
+	return model
 
 def snnmlp_s(pretrained=False, **kwargs):
-	  """ # This docstring shows up in hub.help()
+	""" # This docstring shows up in hub.help()
     SNN-MLP small model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	  model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 18, 2], drop_path_rate=0.3)
-	  if pretrained:
-	  	  state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_s, progress=True)
-	  	  model.load_state_dict(state_dict)
-	  return model
+	model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 18, 2], drop_path_rate=0.3)
+	if pretrained:
+		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_s, progress=True)
+		model.load_state_dict(state_dict)
+	return model
 
 def snnmlp_b(pretrained=False, **kwargs):
-	  """ # This docstring shows up in hub.help()
+	""" # This docstring shows up in hub.help()
     SNN-MLP base model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	  model = SNNMLP(num_classes=1000, embed_dim=128, depths=[2, 2, 18, 2], drop_path_rate=0.5)
-	  if pretrained:
-	  	  state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_b, progress=True)
-	  	  model.load_state_dict(state_dict)
-	  return model
+	model = SNNMLP(num_classes=1000, embed_dim=128, depths=[2, 2, 18, 2], drop_path_rate=0.5)
+	if pretrained:
+		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_b, progress=True)
+		model.load_state_dict(state_dict)
+	return model
 
 # ===================================================================
 #  wavemlp
