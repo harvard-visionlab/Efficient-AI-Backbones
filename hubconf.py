@@ -144,14 +144,14 @@ def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		msg = model.load_state_dict(state_dict, strict=True)
+        msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '06c49bda'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        model.hashid = '06c49bda'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+    
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-	return model
+    return model
 
 def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -170,12 +170,12 @@ def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 		)
 		msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '03455330'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        model.hashid = '03455330'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+    
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-	return model
+    return model
 
 def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -194,12 +194,12 @@ def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 		)
 		msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '5a5ce0c0'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        model.hashid = '5a5ce0c0'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+    
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-	return model
+    return model
 
 def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
@@ -216,14 +216,14 @@ def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		msg = model.load_state_dict(state_dict, strict=True)
+        msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = 'aafa414a'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
-	return model
+        model.hashid = 'aafa414a'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+    
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    
+    return model
 
 # ===================================================================
 #  others...
