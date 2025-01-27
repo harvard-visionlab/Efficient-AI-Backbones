@@ -66,13 +66,13 @@ def vig_b_224_gelu(pretrained=True, **kwargs):
     if pretrained:
         checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_b_82.6.pth'
         cache_file_name = "vig_b_82.6-40b0685d.pth"
-		state_dict = torch.hub.load_state_dict_from_url(
+        state_dict = torch.hub.load_state_dict_from_url(
 			url=checkpoint_url, 
 			map_location='cpu',
 			file_name=cache_file_name,
 			check_hash=True
-		)
-		msg = model.load_state_dict(state_dict, strict=True)
+        )
+        msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
 		model.hashid = '40b0685d'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
@@ -90,13 +90,13 @@ def vig_s_224_gelu(pretrained=True, **kwargs):
     if pretrained:
         checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_s_80.6.pth'
         cache_file_name = "vig_s_80.6-081bb44c.pth"
-		state_dict = torch.hub.load_state_dict_from_url(
+        state_dict = torch.hub.load_state_dict_from_url(
 			url=checkpoint_url, 
 			map_location='cpu',
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		msg = model.load_state_dict(state_dict, strict=True)
+        msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
 		model.hashid = '081bb44c'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
@@ -114,13 +114,13 @@ def vig_ti_224_gelu(pretrained=True, **kwargs):
     if pretrained:
         checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_ti_74.5.pth'
         cache_file_name = "vig_ti_74.5-61872146.pth"
-		state_dict = torch.hub.load_state_dict_from_url(
+        state_dict = torch.hub.load_state_dict_from_url(
 			url=checkpoint_url, 
 			map_location='cpu',
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		msg = model.load_state_dict(state_dict, strict=True)
+        msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
 		model.hashid = '61872146'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
