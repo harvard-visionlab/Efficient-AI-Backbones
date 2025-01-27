@@ -6,6 +6,7 @@ import torchvision
 from ghostnet_pytorch.ghostnet import ghostnet
 from snnmlp_pytorch.models.snn_mlp import SNNMLP
 from vig_pytorch import pyramid_vig as _pyramid_vig
+from vig_pytorch import vig as _vig
 from wavemlp_pytorch.models import wavemlp as _wavemlp
 
 dependencies = ['torch', 'torchvision']
@@ -56,6 +57,78 @@ def ghostnet_1x(pretrained=True, **kwargs):
 #  Vision Graph Neural Network
 # ===================================================================
 
+def vig_b_224_gelu(pretrained=True, **kwargs):
+    """
+	Vision GNN (vig_b_224_gelu)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+    model = _vig.vig_b_224_gelu(**kwargs)
+    if pretrained:
+        checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_b_82.6.pth'
+        cache_file_name = "vig_b_82.6-40b0685d.pth"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
+		model.hashid = '40b0685d'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    return model
+
+def vig_s_224_gelu(pretrained=True, **kwargs):
+    """
+	Vision GNN (vig_s_224_gelu)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+    model = _vig.vig_s_224_gelu(**kwargs)
+    if pretrained:
+        checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_s_80.6.pth'
+        cache_file_name = "vig_s_80.6-081bb44c.pth"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
+		model.hashid = '081bb44c'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    return model
+
+def vig_ti_224_gelu(pretrained=True, **kwargs):
+    """
+	Vision GNN (vig_b_224_gelu)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+    model = _vig.vig_ti_224_gelu(**kwargs)
+    if pretrained:
+        checkpoint_url = 'https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/vig/vig_ti_74.5.pth'
+        cache_file_name = "vig_ti_74.5-61872146.pth"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
+		model.hashid = '61872146'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+		
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    return model
+    
 def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_ti_224_gelu)
@@ -71,11 +144,12 @@ def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		model.load_state_dict(state_dict, strict=True)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
 		model.hashid = '06c49bda'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
-	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 	return model
 
@@ -94,11 +168,12 @@ def pvig_s_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		model.load_state_dict(state_dict, strict=True)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
 		model.hashid = '03455330'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
-	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 	return model
 
@@ -117,11 +192,12 @@ def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		model.load_state_dict(state_dict, strict=True)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
 		model.hashid = '5a5ce0c0'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
-	transform = _transform(resize=int(224/.9), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 	return model
 
@@ -140,13 +216,18 @@ def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 			file_name=cache_file_name,
 			check_hash=True
 		)
-		model.load_state_dict(state_dict, strict=True)
+		msg = model.load_state_dict(state_dict, strict=True)
+        print(msg)
 		model.hashid = 'aafa414a'
 		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
 		
-	transform = _transform(resize=int(224/.95), mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 	return model
+
+# ===================================================================
+#  others...
+# ===================================================================
 
 def ghostnet_1x(pretrained=False, **kwargs):
 	  """ # This docstring shows up in hub.help()
