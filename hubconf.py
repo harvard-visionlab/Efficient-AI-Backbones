@@ -74,11 +74,11 @@ def vig_b_224_gelu(pretrained=True, **kwargs):
         )
         msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '40b0685d'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
+        model.hashid = '40b0685d'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+        
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    
     return model
 
 def vig_s_224_gelu(pretrained=True, **kwargs):
@@ -98,11 +98,11 @@ def vig_s_224_gelu(pretrained=True, **kwargs):
 		)
         msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '081bb44c'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
+        model.hashid = '081bb44c'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+        
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    
     return model
 
 def vig_ti_224_gelu(pretrained=True, **kwargs):
@@ -122,11 +122,11 @@ def vig_ti_224_gelu(pretrained=True, **kwargs):
 		)
         msg = model.load_state_dict(state_dict, strict=True)
         print(msg)
-		model.hashid = '61872146'
-		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
-		
-	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
+        model.hashid = '61872146'
+        model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+        
+    transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    
     return model
     
 def pvig_ti_224_gelu_in1k(pretrained=True, **kwargs):
