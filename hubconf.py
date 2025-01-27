@@ -5,7 +5,6 @@ import os
 import torch
 import torchvision
 from ghostnet_pytorch.ghostnet import ghostnet
-from snnmlp_pytorch.models.snn_mlp import SNNMLP
 from vig_pytorch import pyramid_vig as _pyramid_vig
 from vig_pytorch import vig as _vig
 from wavemlp_pytorch.models import wavemlp as _wavemlp
@@ -247,7 +246,8 @@ def snnmlp_t(pretrained=False, **kwargs):
     SNN-MLP tiny model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 6, 2], drop_path_rate=0.2)
+    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	model = _SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 6, 2], drop_path_rate=0.2)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_t, progress=True)
 		model.load_state_dict(state_dict)
@@ -258,7 +258,8 @@ def snnmlp_s(pretrained=False, **kwargs):
     SNN-MLP small model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	model = SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 18, 2], drop_path_rate=0.3)
+    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	model = _SNNMLP(num_classes=1000, embed_dim=96, depths=[2, 2, 18, 2], drop_path_rate=0.3)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_s, progress=True)
 		model.load_state_dict(state_dict)
@@ -269,7 +270,8 @@ def snnmlp_b(pretrained=False, **kwargs):
     SNN-MLP base model
     pretrained (bool): kwargs, load pretrained weights into the model
     """
-	model = SNNMLP(num_classes=1000, embed_dim=128, depths=[2, 2, 18, 2], drop_path_rate=0.5)
+    from snnmlp_pytorch.models.snn_mlp import SNNMLP as _SNNMLP
+	model = _SNNMLP(num_classes=1000, embed_dim=128, depths=[2, 2, 18, 2], drop_path_rate=0.5)
 	if pretrained:
 		state_dict = torch.hub.load_state_dict_from_url(state_dict_url_snnmlp_b, progress=True)
 		model.load_state_dict(state_dict)
