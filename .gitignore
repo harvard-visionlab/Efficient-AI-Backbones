@@ -1,4 +1,12 @@
-.DS_Store
-.*/__pycache__
-.*pyc
+.DS_Store 
+.*/__pycache__ 
+.*pyc 
 
+# Ignore all __pycache__ directories
+__pycache__/
+
+# Ignore all .pyc files
+*.pyc
+
+# Optionally, ignore all .pyo files (if applicable)
+*.pyo
