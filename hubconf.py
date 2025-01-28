@@ -209,7 +209,7 @@ def pvig_m_224_gelu_in21k(pretrained=True, **kwargs):
 	"""
 	model = _pyramid_vig.pvig_m_224_gelu(num_classes=21841)
 	if pretrained:
-		checkpoint_url = "https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/pyramid-vig/pvig_m_im21k_90e.pth'"
+		checkpoint_url = "https://github.com/huawei-noah/Efficient-AI-Backbones/releases/download/pyramid-vig/pvig_m_im21k_90e.pth"
 		cache_file_name = "pvig_m_im21k_90e-5f913b10.pth"
 		state_dict = torch.hub.load_state_dict_from_url(
 			url=checkpoint_url, 
