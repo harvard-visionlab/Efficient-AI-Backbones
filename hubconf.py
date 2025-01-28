@@ -202,6 +202,30 @@ def pvig_m_224_gelu_in1k(pretrained=True, **kwargs):
 
 	return model
 
+def pvig_m_224_gelu_in21k(pretrained=True, **kwargs):
+	"""
+	Vision GNN (pvig_m_224_gelu)
+	pretrained (bool): kwargs, load pretrained weights into the model
+	"""
+	model = _pyramid_vig.pvig_m_224_gelu(num_classes=21841)
+	if pretrained:
+		checkpoint_url = "https://visionlab-pretrainedmodels.s3.amazonaws.com/model_zoo/vignn/pvig_m_im21k_90e.pth"
+		cache_file_name = "pvig_m_im21k_90e-5f913b10.pth"
+		state_dict = torch.hub.load_state_dict_from_url(
+			url=checkpoint_url, 
+			map_location='cpu',
+			file_name=cache_file_name,
+			check_hash=True
+		)
+		msg = model.load_state_dict(state_dict, strict=True)
+		print(msg)
+		model.hashid = '5f913b10'
+		model.weights_file = os.path.join(torch.hub.get_dir(), "checkpoints", cache_file_name)
+    
+	transform = _transform(resize=int(224), mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+	return model
+    
 def pvig_b_224_gelu_in1k(pretrained=True, **kwargs):
 	"""
 	Vision GNN (pvig_b_224_gelu)
